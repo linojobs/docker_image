@@ -5,29 +5,8 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
-    container_name: nginx
-    restart: always
-    depends_on:
-      - php
-    links:
-      - php
-    ports:
-      - "8080:80"
-    networks:
-      - internal
-    volumes:
-      - ./test/:/www/
   php:
     image: linojobs/php
     build:
       context: ./php
       dockerfile: Dockerfile
-    container_name: php
-    restart: always
-    networks:
-      - internal
-    volumes:
-      - ./test/:/www/
-networks:
-  internal:
-    driver: bridge
